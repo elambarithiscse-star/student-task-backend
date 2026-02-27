@@ -1,6 +1,6 @@
 <?php
 /**
- * Database Configuration (Railway Version)
+ * Database Configuration (Railway Version with SSL)
  */
 
 class Database
@@ -19,13 +19,16 @@ class Database
             $port = getenv("MYSQLPORT");
 
             $this->conn = new PDO(
-                "mysql:host={$host};port={$port};dbname={$db_name}",
+                "mysql:host={$host};port={$port};dbname={$db_name};sslmode=require",
                 $username,
-                $password
+                $password,
+                [
+                    PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => false,
+                    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+                ]
             );
 
             $this->conn->exec("set names utf8");
-            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
         } catch (PDOException $exception) {
             echo json_encode([
