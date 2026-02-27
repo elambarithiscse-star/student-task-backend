@@ -1,7 +1,5 @@
 services:
   - type: web
     name: student-task-backend
-    env: php
+    env: docker
     plan: free
-    buildCommand: ""
-    startCommand: "php -S 0.0.0.0:10000"
