@@ -1,0 +1,7 @@
+{
+    "user_id": 1,
+    "title": "Test Task via Curl",
+    "description": "Created to verify backend",
+    "due_date": "2026-12-31 23:59:59",
+    "status": "pending"
+}
